@@ -4,7 +4,6 @@ import edu.pja.sri.lab07.AddPost;
 import edu.pja.sri.lab07.EmptyError;
 import edu.pja.sri.lab07.PostModel;
 import org.apache.thrift.TException;
-import edu.pja.sri.lab07.Post;
 
 public class AddPostHandler implements AddPost.Iface {
 

@@ -1,6 +1,5 @@
 package edu.pja.sri.lab07.server.handlers;
 
-import edu.pja.sri.lab07.EmptyError;
 import edu.pja.sri.lab07.GetPost;
 import edu.pja.sri.lab07.PostModel;
 import org.apache.thrift.TException;

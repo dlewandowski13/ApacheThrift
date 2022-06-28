@@ -11,17 +11,10 @@ struct PostModel {
     1:string message
   }
 
-  struct Result
-  {
-    1:i32 result;
-  }
-
-  service Post {
-    PostModel getPost(1: i64 id),
+  service AddPost {
     void addPost(1: PostModel postModel) throws (1: EmptyError error)
   }
 
-  service MultiplyService
-  {
-    Result multiply(1:i32 a,2:i32 b)
+  service GetPost {
+    PostModel getPost(1: i64 id)
   }

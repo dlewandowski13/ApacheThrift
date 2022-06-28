@@ -1,19 +1,16 @@
 package edu.pja.sri.lab07.server.handlers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.pja.sri.lab07.EmptyError;
+import edu.pja.sri.lab07.GetPost;
 import edu.pja.sri.lab07.PostModel;
 import org.apache.thrift.TException;
-import edu.pja.sri.lab07.Post;
 
-public class ProductCartHandler implements Post.Iface {
+public class GetPostHandler implements GetPost.Iface {
 
 
     @Override
     public PostModel getPost(long id) throws TException {
-        System.out.println("to jest post.");
+        System.out.println("Zwrócono post.");
         //        TODO - zapisywanie i pobieranie z bazy
         PostModel post = new PostModel();
         post.id = 1;
@@ -24,8 +21,4 @@ public class ProductCartHandler implements Post.Iface {
         return post;
     }
 
-    @Override
-    public void addPost(PostModel postModel) throws EmptyError, TException {
-        System.out.println("Dodano post.");
-    }
 }

@@ -1,34 +1,33 @@
 package edu.pja.sri.lab07.client;
 
-import edu.pja.sri.lab07.PostModel;
+import edu.pja.sri.lab07.AddPost;
+import edu.pja.sri.lab07.GetPost;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 
-import edu.pja.sri.lab07.Post;
 
 public class GetPostClient {
     public static void main(String [] args) {
         try {
-            TTransport transport;
-
-            transport = new TSocket("localhost", 9090);
+            TSocket transport = new TSocket("localhost", 9090);
             transport.open();
+            TBinaryProtocol protocol = new TBinaryProtocol(transport);
+            TMultiplexedProtocol mp = new TMultiplexedProtocol(protocol, "GetPost");
 
-            TProtocol protocol = new  TBinaryProtocol(transport);
-            Post.Client cartClient = new Post.Client(protocol);
+            GetPost.Client getPostClient = new GetPost.Client(mp);
+            perform(getPostClient);
 
-            perform(cartClient);
-
-            transport.close();
-        } catch (TException x) {
-            x.printStackTrace();
+        } catch (TException e) {
+            e.printStackTrace();
         }
     }
 
-    private static void perform(Post.Client client) throws TException {
+    private static void perform(GetPost.Client client) throws TException {
         client.getPost(1);
+        System.out.println(client.getPost(1));
     }
 }

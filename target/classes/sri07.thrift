@@ -11,7 +11,10 @@ struct PostModel {
     1:string message
   }
 
-  service Post {
-    PostModel getPost(1: i64 id),
+  service AddPost {
     void addPost(1: PostModel postModel) throws (1: EmptyError error)
+  }
+
+  service GetPost {
+    PostModel getPost(1: i64 id)
   }
